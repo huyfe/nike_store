@@ -1,0 +1,87 @@
+.productDetail {
+    .wrapProductDetail {
+        &__checkout {
+            margin-top: 20px;
+
+            a {
+                padding: 15px 20px;
+                color: #fff;
+                background-color: #000;
+                border: 1px solid #000;
+                i {
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
+
+                &:hover {
+                    background-color: #fff;
+                    color: #000;
+                }
+            }
+        }
+        &__info {
+            p {
+                margin-top: 1px;
+                margin-bottom: 1px;
+                button {
+                    border-radius: 5px;
+                    margin: 20px;
+                    margin-left: 0;
+                    padding: 10px 15px;
+                    color: #3b3b3b;
+                    background-color: #eee;
+
+                    &:focus {
+                        box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
+                    }
+                }
+            }
+
+            .color {
+                margin-top: 10px;
+                margin-bottom: 0px;
+                button {
+                    margin-top: 5px;
+                    padding: 0;
+                    width: 30px;
+                    height: 30px;
+                    margin-left: 0px;
+                    vertical-align: middle;
+                    border: none;
+                    border-radius: 50%;
+
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+
+        &__other {
+            .time {
+                color: #7e7e7e;
+            }
+
+            .write-review {
+                textarea {
+                    &:focus {
+                        box-shadow: 0 0 0 2px rgba(0, 0, 0, 1) !important;
+                    }
+                }
+            }
+
+            .user {
+                i {
+                    margin: 0 3px;
+                }
+                .time {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+.relatedProduct {
+    .slick-slide {
+        padding: 0 20px;
+    }
+}

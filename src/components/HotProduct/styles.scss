@@ -1,0 +1,10 @@
+.hotProduct {
+    .slick-initialized {
+        .slick-slide {
+            padding: 0 10px;
+        }
+        .slick-slide:first-child {
+            padding-left: 0 !important;
+        }
+    }
+}
