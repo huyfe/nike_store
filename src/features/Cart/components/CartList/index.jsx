@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CartDetail from '../CartDetail/index';
+import { connect } from 'react-redux';
 
 CartList.propTypes = {
 
@@ -8,13 +9,13 @@ CartList.propTypes = {
 
 function CartList(props) {
 
-    console.log(props.listProduct);
+    console.log(props.carts);
     let listProduct = [];
-    props.listProduct.map((product) => {
+    props.carts.map((product) => {
         console.log("Product detail ", product);
         listProduct.push(<CartDetail key={product.id} product={product} />);
     });
-    console.log("List product", listProduct);
+    console.log(listProduct);
     return (
         <div className="cart-list">
             {listProduct}
@@ -22,4 +23,10 @@ function CartList(props) {
     );
 }
 
-export default CartList;
+const mapStateToProps = (state) => {
+    return {
+        carts: state.cart
+    }
+}
+
+export default connect(mapStateToProps, null)(CartList);

@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import CartList from '../CartList/index';
 import { Col, Container, Row } from 'react-bootstrap';
 import './styles.scss';
+import { connect } from 'react-redux';
 
 Cart.propTypes = {
 
 };
 
 function Cart(props) {
-    console.log(props.selectedProducts);
+    console.log(props.carts);
 
     let amount = 0;
     let price = 0;
     let fee = 30000;
-    props.selectedProducts.forEach((product) => {
-        amount += product.amount;
+    props.carts.forEach((product) => {
+        amount += Number(product.amount);
         price += product.amount * product.price;
     })
 
@@ -29,7 +30,7 @@ function Cart(props) {
                         <div className="cardSection__title mt-5 mb-3 border-bottom">
                             <h4>Giỏ hàng</h4>
                         </div>
-                        <CartList listProduct={props.selectedProducts} />
+                        <CartList />
                     </Col>
                     <Col lg={4} >
                         <div className="cardSection__summary mt-5 border-bottom">
@@ -49,4 +50,10 @@ function Cart(props) {
     );
 }
 
-export default Cart;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        carts: state.cart
+    }
+}
+
+export default connect(mapStateToProps, null)(Cart);

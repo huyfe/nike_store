@@ -4,7 +4,12 @@ import ReactDOM from 'react-dom';
 import './styles.scss';
 import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 
+const responseGoogle = (response) => {
+    console.log(response);
+}
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -16,21 +21,14 @@ class Login extends Component {
             isLogin: false,
         }
     }
-
-    componentDidMount() {
-        window.scrollTo(0, 0);
-    }
-
     getUserName = (e) => {
         this.state.username = e.target.value;
         this.setState({ messageUsername: "" });
     }
-
     getPassword = (e) => {
         this.state.password = e.target.value;
         this.setState({ messagePassword: "" });
     }
-
     onSubmit = (e) => {
         e.preventDefault();
         var username = this.state.username;
@@ -48,8 +46,36 @@ class Login extends Component {
         }
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        ReactDOM.render(
+            <GoogleLogin
+                clientId="267514984177-9jmq7a1a45i4dug7b8snh11nqgtu34um.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={this.dangNhhapThanhCong}
+                onFailure={this.dangNhapThatBai}
+                cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
+            />,
+            document.getElementById('googleButton')
+        );
+    }
+    dangNhhapThanhCong = (response) => {
+        alert("Đăng nhập thành công!");
+        console.log("Đăng nhập thành công", response);
+        this.setState({ isLogin: true });
+        setTimeout(() => {
+            this.setState({ isLogin: false });
+        })
+    }
+    thoat = (response) => {
+        console.log("Đã thoát", response);
+    }
+    dangNhapThatBai = (response) => {
+        console.log("Đăng nhập thất bại", response);
+    }
+
     render() {
-        console.log("Render");
         const kq =
             <>
                 <Container>
@@ -86,6 +112,7 @@ class Login extends Component {
                                     </div>
                                 </form>
                             </div>
+                            <div className="mt-3 text-center" id="googleButton">Login google</div>
                         </Col>
                     </Row>
                 </Container>
@@ -93,6 +120,8 @@ class Login extends Component {
             ;
 
         return (kq);
+
+
     }
 }
 

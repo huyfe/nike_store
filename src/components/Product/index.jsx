@@ -5,6 +5,9 @@ import './styles.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { actAddCart, actEditCart, actRemoveCart } from '../../actions/actCart';
+
 Product.propTypes = {
 
 };
@@ -22,7 +25,19 @@ function Product(props) {
 
     const addToCart = (idProduct) => {
         onCart();
-        props.updateCart(idProduct);
+        let productDetail = props.products.find(p => p.id === idProduct);
+        if (productDetail !== undefined) {
+            let newProductDetail = props.carts.find(p => p.id === idProduct);
+            if (newProductDetail !== undefined) {
+                newProductDetail.amount += 1;
+                newProductDetail.priceCart = Number(newProductDetail.amount * newProductDetail.price);
+                props.editCart(idProduct, newProductDetail);
+            }
+            else {
+                productDetail.priceCart = productDetail.price;
+                props.addCart(productDetail);
+            }
+        }
     }
 
     return (
@@ -31,7 +46,7 @@ function Product(props) {
                 <img src={props.product.imageURL[0]} alt="" />
                 <img src={props.product.imageURL[1]} alt="" />
             </div>
-            <h4 className="card-product__name mt-3"><Link to={"product/" + props.product.id}>{props.product.name}</Link></h4>
+            <h4 className="card-product__name mt-3"><Link to={"../product/" + props.product.id}>{props.product.name}</Link></h4>
             <p className="card-product__price">Giá: {props.product.price.toLocaleString("vi")} VNĐ</p>
 
             <div className="card-product__action">
@@ -48,4 +63,19 @@ function Product(props) {
     );
 }
 
-export default Product;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        editCart: (id, product) => { dispatch(actEditCart(id, product)); },
+        addCart: (product) => { dispatch(actAddCart(product)); },
+        removeCart: (id) => { dispatch(actRemoveCart(id)); },
+    };
+}
+
+const mapStateToProps = (state) => {
+    return {
+        carts: state.cart,
+        products: state.product
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

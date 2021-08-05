@@ -4,24 +4,46 @@ import './styles.scss';
 import { Link, NavLink, Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
+import { connect } from "react-redux";
+import { GoogleLogout } from 'react-google-login';
 
 Header.propTypes = {
     amountProduct: PropTypes.number
 };
 
 function Header(props) {
+
+    let amount = 0;
+    props.carts.forEach((product) => {
+        amount += Number(product.amount);
+    })
+
+    const logout = (res) => {
+        alert("Đăng xuất thành công");
+    }
+
     return (
         <header className="header">
             <Container fluid={true} className="h-100 px-5">
                 <Switch>
                     <Row className="align-items-center h-100 justify-content-between">
-                        <Col lg={8} >
+                        <Col lg={6} >
                             <ul className="header__menu text-left align-items-center">
                                 <NavLink to="/" exact className="header__logo"> <img src="/images/logo.jpg" className="img-fluid" /> </NavLink>
                                 <NavLink to="/" exact> Trang chủ </NavLink>
-                                <NavLink to="/products" > Sản phẩm </NavLink>
-                                <NavLink to="/our-stories" > Về chúng tôi </NavLink>
-                                <NavLink to="/sale" > Giảm giá </NavLink>
+                                <NavLink className="menu-item-has-children" to="/products" > Sản phẩm
+                                    <ul className="sub-menu">
+                                        {
+                                            props.categories.map((category) => {
+                                                return (<li className="sub-item">
+                                                    <Link to={"/products/" + category.name}>{category.name}</Link>
+                                                </li>)
+                                            })
+                                        }
+                                    </ul>
+                                </NavLink>
+                                <NavLink to="/report" > Báo cáo </NavLink>
+                                <NavLink to="/products/Sale" > Giảm giá </NavLink>
                                 <NavLink to="/service" > Dịch vụ </NavLink>
                                 <NavLink to="/contact" > Liên hệ </NavLink>
                             </ul>
@@ -42,11 +64,19 @@ function Header(props) {
                                 <NavLink onMouseEnter={props.showMiniCart} onMouseLeave={props.showMiniCart} to="/cart">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20"><g><g><g><g><path fill="#282827" d="M1.73 18.41l.818-12.274h11.273l.818 12.273zM5.526 4.25c.258-3.86 5.69-3.35 5.308.54H5.526zm9.613 1.177a.682.682 0 0 0-.681-.636h-2.25c.29-6.055-8.337-6.055-8.046 0h-2.25a.682.682 0 0 0-.682.636L.321 19.064a.686.686 0 0 0 .682.727h14.364a.686.686 0 0 0 .681-.727z"></path></g></g></g></g></svg>
                                     <span>Giỏ hàng</span>
-                                    <span className="total">{(props.totalAmount > 9) ? "9+" : props.totalAmount}</span>
+                                    <span className="total">{(amount > 9) ? "9+" : amount}</span>
                                 </NavLink>
                                 <NavLink to="/login">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20"><g><g><g><path fill="#282827" d="M5.573 5.566a3.977 3.977 0 0 1 3.972-3.972c5.264.209 5.264 7.727 0 7.94a3.977 3.977 0 0 1-3.972-3.968zm6.922 4.437C16.841 7.126 14.832.253 9.545.23 4.26.207 2.273 7.126 6.595 10.003A9.573 9.573 0 0 0 0 19.093a.682.682 0 1 0 1.364 0 8.182 8.182 0 1 1 16.363 0 .682.682 0 1 0 1.364 0 9.573 9.573 0 0 0-6.596-9.09z"></path></g></g></g></svg>
                                     <span>Đăng nhập</span>
+                                </NavLink>
+                                <NavLink to="/login">
+                                    <GoogleLogout
+                                        clientId="267514984177-9jmq7a1a45i4dug7b8snh11nqgtu34um.apps.googleusercontent.com"
+                                        buttonText="Logout"
+                                        onLogoutSuccess={logout}
+                                    >
+                                    </GoogleLogout>
                                 </NavLink>
                             </div>
                         </Col>
@@ -59,4 +89,11 @@ function Header(props) {
     );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        categories: state.category,
+        carts: state.cart
+    }
+}
+
+export default connect(mapStateToProps, null)(Header);

@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import './styles.scss';
 import { useEffect } from 'react';
 import ListProduct from '../../../../components/ListProduct';
+import { connect } from 'react-redux';
 
 ProductDetail.propTypes = {
 
@@ -16,26 +17,12 @@ function ProductDetail(props) {
 
         return () => {
         };
-    }, []);
+    }, [props]);
 
-    const products = [
-        { id: 0, name: 'Nike Air Max 2021', amount: 0, price: 200000, salePrice: 1, imageURL: ['../images/shoes-1.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 0, style: 'Lifestyle', createdDate: new Date(), views: 1, likes: 1, color: 'White', size: [39, 40, 41, 42], isSale: 0 },
-        { id: 1, name: 'Nike Air Force 1', amount: 0, price: 350000, salePrice: 1, imageURL: ['../images/shoes-2.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 0, style: 'Air Force 1', createdDate: new Date(), views: 1, likes: 1, color: 'Pink', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 2, name: 'Nike Jordan 1 x Dior', amount: 0, price: 545000, salePrice: 1, imageURL: ['../images/shoes-3.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 0, style: 'Jordan', createdDate: new Date(), views: 1, likes: 1, color: 'Cyan', size: [39, 40, 41, 42], isSale: 0 },
-        { id: 3, name: 'Nike Phantom GT2 Elite FG', amount: 0, price: 299000, salePrice: 1, imageURL: ['../images/shoes-4.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 0, style: 'Soccer', createdDate: new Date(), views: 1, likes: 1, color: 'Blue', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 4, name: 'Nike Sportwear', amount: 0, price: 499000, salePrice: 1, imageURL: ['../images/shoes-5.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 1, style: 'Shorts', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 5, name: 'Nike Sportwear Alumni', amount: 0, price: 299000, salePrice: 1, imageURL: ['../images/shoes-6.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 1, style: 'Shorts', createdDate: new Date(), views: 1, likes: 1, color: 'White', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 6, name: 'Nike Team USA', amount: 0, price: 199000, salePrice: 1, imageURL: ['../images/shoes-7.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 1, style: 'Pants', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 7, name: 'Nike Sportwear Club Fleece', amount: 1, price: 199000, salePrice: 1, imageURL: ['../images/shoes-8.jpg', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 1, style: 'Shorts', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 8, name: 'Nike Sportwear Club Fleece', amount: 1, price: 899000, salePrice: 1, imageURL: ['0', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 2, style: 'Hoodies', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 9, name: 'Nike Sportwear Tech Fleece', amount: 1, price: 459000, salePrice: 1, imageURL: ['0', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 2, style: 'Hoodies', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 10, name: 'Nike Sportwear Club', amount: 0, price: 499000, salePrice: 1, imageURL: ['0', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 2, style: 'T-shirts', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-        { id: 11, name: 'Nike x Space Jam', amount: 0, price: 399000, salePrice: 1, imageURL: ['0', '1', '2', '3', '4'], description: 'Giày thể thao dành cho tất cả mọi người, kiểu dáng đẹp, mẫu mã đa dạng, hàng chính hãng', category: 2, style: 'T-shirts', createdDate: new Date(), views: 1, likes: 1, color: 'Gray', size: [39, 40, 41, 42], isSale: 1 },
-    ];
 
     let { id } = useParams();
 
-    let product = products.find((product, index) => { if (product.id === Number(id)) return true; });
+    let product = props.products.find((product, index) => { if (product.id === Number(id)) return true; });
 
     const [isReview, setIsReview] = useState(false);
 
@@ -154,10 +141,16 @@ function ProductDetail(props) {
 
             <Container className="relatedProduct pb-3 overflow-hidden mb-5" fluid={true}>
                 <h3 className="mt-5 text-center mb-3">Sản phẩm liên quan</h3>
-                <ListProduct listProduct={products} />
+                <ListProduct listProduct={props.products} />
             </Container>
         </>
     );
 }
 
-export default ProductDetail;
+const mapStateToProps = (state) => {
+    return {
+        products: state.product
+    }
+}
+
+export default connect(mapStateToProps, null)(ProductDetail);

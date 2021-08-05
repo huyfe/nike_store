@@ -13,13 +13,9 @@ ListProduct.propTypes = {
 function ListProduct(props) {
 
 
-    const updateCart = (idProduct) => {
-        props.updateCart(idProduct);
-    }
-
     let listProduct = [];
     props.listProduct.map((product) => {
-        listProduct.push(<Product key={product.id} updateCart={updateCart} product={product} />);
+        listProduct.push(<Product key={product.id} product={product} />);
     });
 
     var settings = {

@@ -1,0 +1,364 @@
+{
+    "category": [
+        {
+            "id": 0,
+            "name": "Giày",
+            "slot": "1",
+            "active": "1"
+        },
+        {
+            "id": 1,
+            "name": "Quần",
+            "slot": "2",
+            "active": "1"
+        },
+        {
+            "id": 2,
+            "name": "Áo",
+            "slot": 3,
+            "active": "1"
+        }
+    ],
+    "product": [
+        {
+            "id": 0,
+            "name": "Nike Air Max 2021",
+            "amount": 0,
+            "price": 200000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/shoes-1.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 0,
+            "style": "Lifestyle",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "White",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 0
+        },
+        {
+            "id": 1,
+            "name": "Nike Air Force 1",
+            "amount": 0,
+            "price": 350000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/shoes-2.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 0,
+            "style": "Air Force 1",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Pink",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 2,
+            "name": "Nike Jordan 1 x Dior",
+            "amount": 0,
+            "price": 545000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/shoes-3.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 0,
+            "style": "Jordan",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Cyan",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 0
+        },
+        {
+            "id": 3,
+            "name": "Nike Phantom GT2 Elite FG",
+            "amount": 0,
+            "price": 299000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/shoes-4.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 0,
+            "style": "Soccer",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Blue",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 4,
+            "name": "Quần Nike Sportwear",
+            "amount": 0,
+            "price": 499000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/quan1.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 1,
+            "style": "Shorts",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 5,
+            "name": "Quần Nike Sportwear Alumni",
+            "amount": 0,
+            "price": 299000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/quan2.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 1,
+            "style": "Shorts",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "White",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 6,
+            "name": "Quần Nike Team USA",
+            "amount": 0,
+            "price": 199000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/quan3.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 1,
+            "style": "Pants",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 7,
+            "name": "Quần Nike Sportwear Club Fleece",
+            "amount": 1,
+            "price": 199000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/quan4.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Quần Nike",
+            "categoryId": 1,
+            "style": "Shorts",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 8,
+            "name": "Áo Nike Sportwear Club Fleece",
+            "amount": 1,
+            "price": 899000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/ao4.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Áo Nike",
+            "categoryId": 2,
+            "style": "Hoodies",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 9,
+            "name": "Áo Nike Sportwear Tech Fleece",
+            "amount": 1,
+            "price": 459000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/ao3.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Áo Nike",
+            "categoryId": 2,
+            "style": "Hoodies",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 10,
+            "name": "Áo Nike Sportwear Club",
+            "amount": 0,
+            "price": 499000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/ao2.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Áo Nike",
+            "categoryId": 2,
+            "style": "T-shirts",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        },
+        {
+            "id": 11,
+            "name": "Áo Nike x Space Jam",
+            "amount": 0,
+            "price": 399000,
+            "salePrice": 1,
+            "imageURL": [
+                "./images/ao1.jpg",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Nike",
+            "categoryId": 2,
+            "style": "T-shirts",
+            "createdDate": "new Date()",
+            "views": 1,
+            "likes": 1,
+            "color": "Gray",
+            "size": [
+                39,
+                40,
+                41,
+                42
+            ],
+            "isSale": 1
+        }
+    ],
+    "profile": {
+        "ten": "sachHay",
+        "tacgia": "Tran Quoc Huy"
+    }
+}

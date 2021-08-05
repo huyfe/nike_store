@@ -16,7 +16,7 @@ function CartPage(props) {
     }, []);
     return (
         <>
-            <Cart selectedProducts={props.selectedProducts} />
+            <Cart />
         </>
     );
 }

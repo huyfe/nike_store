@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
+
+import { connect } from 'react-redux';
+import { actRemoveCart } from '../../actions/actCart';
+
 MiniCart.propTypes = {
 
 };
@@ -8,20 +12,19 @@ MiniCart.propTypes = {
 function MiniCart(props) {
 
     const deleteItemCart = (idProduct) => {
-        props.deleteCart(idProduct);
+        props.removeCart(idProduct);
     }
 
-    let products = [];
-    props.selectedProducts.forEach(product => {
-        products.push(
+    let products = props.carts.map(product => {
+        return (
             <div key={product.id} className="miniCartProduct">
                 <div className="miniCartProduct__image"> <img src={product.imageURL[0]} /> </div>
                 <div className="miniCartProduct__card">
                     <h4>{product.name}</h4>
-                    <p>Giá: {product.price.toLocaleString("vi")} VNĐ</p>
-                    <span>Số lượng: {product.amount}</span>
+                    <p>Giá: {product.priceCart.toLocaleString("vi") || ""} VNĐ</p>
+                    <span>Số lượng: {product.amount || ""}</span>
 
-                    <button onClick={deleteItemCart(product.id)} className="miniCartProduct__delProduct">
+                    <button onClick={() => deleteItemCart(product.id)} className="miniCartProduct__delProduct">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                         </svg>
@@ -29,8 +32,25 @@ function MiniCart(props) {
                 </div>
             </div >
         )
-
     });
+
+    const totalAmount = () => {
+        let total = 0;
+        if (props.carts.length > 0) {
+            props.carts.forEach(p => total += p.amount);
+        }
+        return total;
+    }
+
+    const totalPrice = () => {
+        let price = 0;
+        if (props.carts.length > 0) {
+            props.carts.forEach(p => price += p.price * p.amount);
+        }
+        return price;
+    }
+
+    console.log("Render lại");
 
     return (
         <div className="miniCart">
@@ -41,8 +61,8 @@ function MiniCart(props) {
             </div>
 
             <div className="miniCart__total">
-                <p>Tổng số lượng: {props.totalAmount || 0}</p>
-                <p>Thành tiền: <span>{props.totalPrice.toLocaleString("vi") || 0}</span> VNĐ</p>
+                <p>Tổng số lượng: {totalAmount()}</p>
+                <p>Thành tiền: <span>{totalPrice().toLocaleString("vi")}</span> VNĐ</p>
             </div>
 
             <div className="miniCart__checkout">
@@ -58,4 +78,16 @@ function MiniCart(props) {
     );
 }
 
-export default MiniCart;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        carts: state.cart,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeCart: (id) => { dispatch(actRemoveCart(id)); },
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MiniCart);

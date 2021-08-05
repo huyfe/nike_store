@@ -43,6 +43,48 @@ main {
     &__menu {
         margin: 0 !important;
         padding: 0 !important;
+
+        .menu-item-has-children {
+            position: relative;
+            &:hover .sub-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+            .sub-menu {
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                width: 150%;
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 100%;
+                left: -50%;
+
+                transform: translateX(15%);
+                transition: all 0.3s;
+
+                padding: 15px 20px;
+                background-color: #fff;
+                text-align: left;
+
+                border-radius: 10px;
+
+                .sub-item {
+                    border-bottom: 0.5px solid #eee;
+                    margin-bottom: 10px;
+                    &:hover a {
+                        color: orangered;
+                    }
+                    a {
+                        display: block;
+                        padding: 0;
+                        &:hover {
+                            color: orangered;
+                        }
+                    }
+                }
+            }
+        }
+
         a {
             color: #000;
             padding: 1rem 0;

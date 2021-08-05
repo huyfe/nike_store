@@ -11,7 +11,7 @@ CartFeature.propTypes = {
 function CartFeature(props) {
     return (
         <Switch>
-            <Route path="/cart" exact component={() => <CartPage selectedProducts={props.selectedProducts} />} />
+            <Route path="/cart" exact component={CartPage} />
         </Switch>
     );
 }

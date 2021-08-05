@@ -1,3 +1,4 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { Route } from 'react-router-dom';
@@ -11,8 +12,17 @@ import OurServiceSection from './components/OurServiceSection/index';
 import UserFeature from './features/User/index';
 import CartFeature from './features/Cart/index';
 import ProductFeature from './features/Product/index';
+import Report from './components/Report/index';
 
-function App() {
+import { connect } from 'react-redux';
+import { actSetProToStore } from './actions/actPro';
+import { actSetCatToStore } from './actions/actCat';
+
+
+
+
+
+function App(props) {
   const [category, setCategory] = useState([
     { id: 0, name: 'Giày', slot: 1, active: 1 },
     { id: 1, name: 'Quần', slot: 2, active: 1 },
@@ -41,128 +51,60 @@ function App() {
   const [isMiniCart, setIsMiniCart] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
 
-
   // Hàm hiển thị giỏ hàng khi hover vào icon giỏ hàng
   const showMiniCart = () => {
     setIsMiniCart(!isMiniCart);
   }
 
-  // Hàm xóa gió hảng
-  // const deleteCart = (idProduct) => {
-  //   let selectedProduct = selectedProducts.find((product, index) => {
-  //     if (product.id === idProduct) {
-
-  //       // Clone state ra mảng mới để thêm sản phẩm đc chọn 
-  //       let newSelectedProducts = [...selectedProducts];
-  //       newSelectedProducts.splice(index, 1);
-  //       setSelectedProducts(newSelectedProducts);
-
-  //       setTotalAmount(totalAmount - product.amount);
-  //       setTotalPrice(totalPrice - (product.amount * product.price));
-  //     }
-  //   })
-  // }
-
-
-  // Hàm cập nhật giỏ hàng
-  const updateCart = (idProduct) => {
-    let selectedProduct = products.find((product, index) => { if (product.id === idProduct) return true; });
-    // Nếu ko tìm thấy thì return
-    if (selectedProduct === undefined) return;
-
-    // Nếu tìm thấy sản phẩm trong mảng và giỏ hàng trống
-    if (selectedProducts <= 0) {
-      console.log("Giỏ hàng trống");
-
-      // Clone state ra mảng mới để thêm sản phẩm đc chọn 
-      let newSelectedProducts = [...selectedProducts];
-
-      // Gán số lượng của sản phẩm đc chọn = 1
-      selectedProduct.amount = 1;
-
-      // Đẩy sp vừa đc chọn vào mảng mới clone
-      newSelectedProducts.push(selectedProduct);
-
-      // Dùng setTimeout vì cho hiệu ứng chạy xong mới updateCart
-      setTimeout(() => {
-        // Gán lại mảng vừa clone vào lại state
-        setSelectedProducts(newSelectedProducts);
-        // Set tổng giá và tổng số lượng
-        setTotalPrice(selectedProduct.price);
-        setTotalAmount(selectedProduct.amount);
-      }, 1000);
-    }
-
-    // Ngược lại giỏ hàng đã có sản phẩm
-    else {
-      let selectedProducting = selectedProducts.find((product, index) => {
-        if (product.id === idProduct) {
-
-          product.amount += 1;
-
-          // Clone state ra mảng mới để thêm sản phẩm đc chọn 
-          let newSelectedProducts = [...selectedProducts];
-
-          // Thay thế sản phẩm đã chọn bằng sản phẩm đã chọn với số lượng mới đc cập nhật
-          newSelectedProducts.splice(index, 1, product);
-
-          // Dùng setTimeout vì cho hiệu ứng chạy xong mới updateCart
-          setTimeout(() => {
-            // Gán lại mảng vừa clone vào lại state
-            setSelectedProducts(newSelectedProducts);
-
-            // Set tổng giá và tổng số lượng
-            setTotalAmount(totalAmount + 1);
-            setTotalPrice(totalPrice + product.price);
-          }, 1000);
-          return true;
-        }
-
+  React.useEffect(() => {
+    let url = "http://localhost:3500/product";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        props.setProToStore(data);
+        console.log(data);
       });
 
-      // Nếu giỏ hàng đã có hàng và sản phẩm này chưa có trong giỏ hàng
-      if (selectedProducting === undefined) {
-        console.log(selectedProduct);
-        // Clone state ra mảng mới để thêm sản phẩm đc chọn 
-        let newSelectedProducts = [...selectedProducts];
-        selectedProduct.amount = 1;
-
-        // Đẩy sp vừa đc chọn vào mảng mới clone
-        newSelectedProducts.push(selectedProduct);
-
-        // Dùng setTimeout vì cho hiệu ứng chạy xong mới updateCart
-        setTimeout(() => {
-          // Gán lại mảng vừa clone vào lại state
-          setSelectedProducts(newSelectedProducts);
-          // Set tổng giá và tổng số lượng
-          setTotalAmount(totalAmount + 1);
-          setTotalPrice(totalPrice + selectedProduct.price);
-        }, 1000);
-      }
-    }
-  }
-
-  const deleteCart = (idProduct) => {
-    console.log(idProduct);
-  }
+    let url2 = "http://localhost:3500/category";
+    fetch(url2)
+      .then(res => res.json())
+      .then(data => {
+        props.setCatToStore(data);
+        console.log(data);
+      });
+  }, [])
 
   return (
     <>
-      <Header totalAmount={totalAmount} showMiniCart={showMiniCart} />
+      <Header showMiniCart={showMiniCart} />
       <main>
         <aside onMouseLeave={showMiniCart} onMouseEnter={showMiniCart} className={isMiniCart ? "wrapMiniCart show" : "wrapMiniCart"}>
-          <MiniCart deleteCart={deleteCart} selectedProducts={selectedProducts} totalPrice={totalPrice} totalAmount={totalAmount} />
+          <MiniCart />
         </aside>
         <Route path="/" exact component={HeroSection} />
         <Route path="/" exact component={OurServiceSection} />
-        <Route path="/" exact component={() => <HotProduct hotProduct={products} updateCart={updateCart} />} />
+        <Route path="/" exact component={() => <HotProduct hotProduct={products} />} />
         <Route path="/login" component={UserFeature} />
         <Route path="/cart" component={() => <CartFeature selectedProducts={selectedProducts} />} />
         <Route path="/product" component={ProductFeature} />
+        <Route path="/products" component={ProductFeature} />
+        <Route path="/report" component={Report} />
       </main>
       <Footer />
     </>
   );
 }
 
-export default App;
+
+
+const mapDispatch = (dispatch) => {
+  return {
+    setProToStore: (arrPro) => {
+      dispatch(actSetProToStore(arrPro));
+    },
+    setCatToStore: (arrCat) => {
+      dispatch(actSetCatToStore(arrCat));
+    }
+  };
+};
+export default connect(null, mapDispatch)(App);
