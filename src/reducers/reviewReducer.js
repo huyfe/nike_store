@@ -19,14 +19,14 @@ const reviewReducer = (state = [], action) => {
             console.log("Đã lấy review về sản phẩm", state);
             return state;
         case ADD_NEW_REVIEW:
-            const idReview = new Date().getTime();
+            console.log("Action", action);
             state = [...state, {
-                id: idReview,
-                ten: action.ten,
-                noidung: action.noidung,
-                sao: action.sao,
-                ngay: action.ngay,
-                productId: action.productId
+                id: action.review.id,
+                ten: action.review.ten,
+                noidung: action.review.noidung,
+                sao: action.review.sao,
+                ngay: action.review.ngay,
+                productId: action.review.productId
             }]
             console.log("Đã thêm review vào sản phẩm", state);
             return state;

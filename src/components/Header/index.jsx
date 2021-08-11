@@ -45,7 +45,7 @@ function Header(props) {
                                 </NavLink>
                                 <NavLink to="/report" > Báo cáo </NavLink>
                                 <NavLink to="/products/Sale" > Giảm giá </NavLink>
-                                <NavLink to="/service" > Dịch vụ </NavLink>
+                                <NavLink to="/gallery" > Thư viện </NavLink>
                                 <NavLink to="/contact" > Liên hệ </NavLink>
                             </ul>
                         </Col>

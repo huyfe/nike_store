@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+
+// Import component
 import Footer from './components/Footer/index';
 import Header from './components/Header/index';
 import HeroSection from './components/HeroSection/index';
@@ -13,6 +15,7 @@ import UserFeature from './features/User/index';
 import CartFeature from './features/Cart/index';
 import ProductFeature from './features/Product/index';
 import Report from './components/Report/index';
+import Gallery from './components/Gallery/index';
 
 import { connect } from 'react-redux';
 import { actSetProToStore } from './actions/actPro';
@@ -83,6 +86,7 @@ function App(props) {
           <Route path="/product" component={ProductFeature} />
           <Route path="/products" component={ProductFeature} />
           <Route path="/report" component={Report} />
+          <Route path="/gallery" component={Gallery} />
         </Switch>
       </main>
       <Footer />

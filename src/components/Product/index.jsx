@@ -39,7 +39,7 @@ function Product(props) {
     return (
         <div className="card-product">
             <div className="card-product__image">
-                <img src={props.product.imageURL[0]} alt="" />
+                <img src={"../" + props.product.imageURL[0]} alt="" />
                 <img src={props.product.imageURL[1]} alt="" />
             </div>
             <h4 className="card-product__name mt-3"><Link to={"../product/" + props.product.id}>{props.product.name}</Link></h4>

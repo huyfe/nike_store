@@ -19,7 +19,9 @@ function Products(props) {
     var countAo = 0;
     var countSale = 0;
 
-    let listAll = props.products.forEach(product => {
+    console.log("list products", props.products);
+
+    let listAll = props.products.map(product => {
         count++;
         product.imageURL[0] = "../" + product.imageURL[0];
         return (
@@ -29,7 +31,7 @@ function Products(props) {
         )
     })
 
-    let listSneaker = props.products.forEach(product => {
+    let listSneaker = props.products.map(product => {
         if (product.categoryId === 0) {
             countSneaker++;
             product.imageURL[0] = "../" + product.imageURL[0];
@@ -41,7 +43,7 @@ function Products(props) {
         }
     })
 
-    let listQuan = props.products.forEach(product => {
+    let listQuan = props.products.map(product => {
         if (product.categoryId === 1) {
             countQuan++;
             product.imageURL[0] = "../" + product.imageURL[0];
@@ -53,7 +55,7 @@ function Products(props) {
         }
     })
 
-    let listAo = props.products.forEach(product => {
+    let listAo = props.products.map(product => {
         if (product.categoryId === 2) {
             countAo++;
             product.imageURL[0] = "../" + product.imageURL[0];
@@ -65,7 +67,7 @@ function Products(props) {
         }
     })
 
-    let listSale = props.products.forEach(product => {
+    let listSale = props.products.map(product => {
         if (product.isSale === 1) {
             countSale++;
             product.imageURL[0] = "../" + product.imageURL[0];
@@ -85,7 +87,7 @@ function Products(props) {
                         <span>Trang chủ / sản phẩm / {id} ({id === "Giày" && countSneaker}
                             {id === "Quần" && countQuan}
                             {id === "Sale" && countSale}
-                            {id === null && count}
+                            {id == null && count}
                             {id === "Áo" && countAo})</span>
                         <h3>Tất cả {id} </h3>
                     </div>
@@ -96,7 +98,7 @@ function Products(props) {
                 {id === "Quần" && listQuan}
                 {id === "Áo" && listAo}
                 {id === "Sale" && listSale}
-                {id === null && listAll}
+                {id == null && listAll}
             </div>
         </div>
     );
