@@ -52,21 +52,21 @@ main {
             }
             .sub-menu {
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-                width: 150%;
+                width: 200%;
                 opacity: 0;
                 visibility: hidden;
                 position: absolute;
                 top: 100%;
-                left: -50%;
+                left: 50%;
+                transform: translateX(-50%);
 
-                transform: translateX(15%);
                 transition: all 0.3s;
 
                 padding: 15px 20px;
                 background-color: #fff;
                 text-align: left;
 
-                border-radius: 10px;
+                border-radius: 0;
 
                 .sub-item {
                     border-bottom: 0.5px solid #eee;

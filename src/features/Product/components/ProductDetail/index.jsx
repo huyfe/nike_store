@@ -32,6 +32,13 @@ function ProductDetail(props) {
         }
     }
     const showReview = () => {
+        if (isReview == false) {
+            window.scrollTo({
+                top: 600,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
         setIsReview(!isReview);
     }
 

@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import ReactDOM from 'react-dom';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 // Import component
 import Footer from './components/Footer/index';
@@ -34,6 +36,7 @@ function App(props) {
   }
 
   useEffect(() => {
+
 
     const fetchProducts = () => {
       let url = "http://localhost:3500/product";
@@ -89,10 +92,13 @@ function App(props) {
           <Route path="/gallery" component={Gallery} />
         </Switch>
       </main>
+      <MessengerCustomerChat pageId="105512605076052" appId="620116525454173" />
       <Footer />
     </>
   );
 }
+
+
 
 
 
