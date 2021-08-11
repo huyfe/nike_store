@@ -209,5 +209,54 @@ main {
                 border: none;
             }
         }
+
+        &--user {
+            font-size: 14px !important;
+            position: relative;
+            margin-top: 20px;
+            padding-bottom: 20px;
+            &:hover ul {
+                opacity: 1;
+                visibility: visible;
+            }
+            ul {
+                border-top: 2px solid #000;
+                width: 150px;
+                margin-top: 15px;
+                padding: 0;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                position: absolute;
+                left: 0%;
+
+                background-color: #fff;
+                box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                li {
+                    padding: 0;
+                    a {
+                        color: #000 !important;
+                        &:hover {
+                            text-decoration: underline !important;
+                        }
+                        button {
+                            display: block !important;
+                            border: none !important;
+                            padding: 0 !important;
+                            box-shadow: none !important;
+                            color: #000 !important;
+                            padding-left: 15px !important;
+
+                            svg {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { GoogleLogout } from 'react-google-login';
+import { actRemoveUser } from '../../actions/actUser';
 
 Header.propTypes = {
     amountProduct: PropTypes.number
@@ -17,9 +18,9 @@ function Header(props) {
     props.carts.forEach((product) => {
         amount += Number(product.amount);
     })
-
     const logout = (res) => {
         alert("Đăng xuất thành công");
+        props.logout();
     }
 
     return (
@@ -29,13 +30,13 @@ function Header(props) {
                     <Row className="align-items-center h-100 justify-content-between">
                         <Col lg={6} >
                             <ul className="header__menu text-left align-items-center">
-                                <NavLink to="/" exact className="header__logo"> <img src="/images/logo.jpg" className="img-fluid" /> </NavLink>
+                                <NavLink to="/" exact className="header__logo"> <img src="/images/logo.jpg" className="img-fluid" alt="Nike" /> </NavLink>
                                 <NavLink to="/" exact> Trang chủ </NavLink>
                                 <NavLink className="menu-item-has-children" to="/products" > Sản phẩm
                                     <ul className="sub-menu">
                                         {
                                             props.categories.map((category) => {
-                                                return (<li className="sub-item">
+                                                return (<li key={category.id} className="sub-item">
                                                     <Link to={"/products/" + category.name}>{category.name}</Link>
                                                 </li>)
                                             })
@@ -66,18 +67,32 @@ function Header(props) {
                                     <span>Giỏ hàng</span>
                                     <span className="total">{(amount > 9) ? "9+" : amount}</span>
                                 </NavLink>
-                                <NavLink to="/login">
+
+                                {props.user === null && <NavLink to="/login">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20"><g><g><g><path fill="#282827" d="M5.573 5.566a3.977 3.977 0 0 1 3.972-3.972c5.264.209 5.264 7.727 0 7.94a3.977 3.977 0 0 1-3.972-3.968zm6.922 4.437C16.841 7.126 14.832.253 9.545.23 4.26.207 2.273 7.126 6.595 10.003A9.573 9.573 0 0 0 0 19.093a.682.682 0 1 0 1.364 0 8.182 8.182 0 1 1 16.363 0 .682.682 0 1 0 1.364 0 9.573 9.573 0 0 0-6.596-9.09z"></path></g></g></g></svg>
                                     <span>Đăng nhập</span>
-                                </NavLink>
-                                <NavLink to="/login">
-                                    <GoogleLogout
-                                        clientId="267514984177-9jmq7a1a45i4dug7b8snh11nqgtu34um.apps.googleusercontent.com"
-                                        buttonText="Logout"
-                                        onLogoutSuccess={logout}
-                                    >
-                                    </GoogleLogout>
-                                </NavLink>
+                                </NavLink>}
+
+                                {props.user !== null &&
+                                    <NavLink to="/user" className="header__icon--user">
+                                        {props.user}
+                                        <ul>
+                                            <li><Link to="/user">Thông tin tài khoản</Link></li>
+                                            <li>
+                                                <NavLink to="/login">
+                                                    <GoogleLogout
+                                                        clientId="267514984177-9jmq7a1a45i4dug7b8snh11nqgtu34um.apps.googleusercontent.com"
+                                                        buttonText="Đăng xuất"
+                                                        onLogoutSuccess={logout}
+                                                    >
+                                                    </GoogleLogout>
+                                                </NavLink>
+                                            </li>
+
+                                        </ul>
+                                    </NavLink>
+                                }
+
                             </div>
                         </Col>
                     </Row>
@@ -92,8 +107,17 @@ function Header(props) {
 const mapStateToProps = (state) => {
     return {
         categories: state.category,
-        carts: state.cart
+        carts: state.cart,
+        user: state.user,
     }
 }
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => {
+            dispatch(actRemoveUser());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

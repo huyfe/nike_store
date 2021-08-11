@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import { Route, Switch } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import { Route, Switch } from 'react-router-dom';
+
 
 UserFeature.propTypes = {
 

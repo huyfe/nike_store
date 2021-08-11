@@ -1,29 +1,26 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import './styles.scss';
-import { useEffect } from 'react';
-import ListProduct from '../../../../components/ListProduct';
 import { connect } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { actAddReview, actGetReviewByIdProduct } from '../../../../actions/actReview';
+import ListProduct from '../../../../components/ListProduct';
+import './styles.scss';
 
 ProductDetail.propTypes = {
 
 };
 function ProductDetail(props) {
+    let { id } = useParams();
 
     useEffect(() => {
         window.scrollTo(0, 0);
 
+
         return () => {
         };
-    }, [props]);
+    }, []);
 
-
-    let { id } = useParams();
-
-    let product = props.products.find((product, index) => { if (product.id === Number(id)) return true; });
-
+    let product = props.products.find((product, index) => (product.id === Number(id)));
     const [isReview, setIsReview] = useState(false);
 
     const showReview = () => {
@@ -50,18 +47,18 @@ function ProductDetail(props) {
                                         </h5>
                                         <p>{product.description}</p>
                                         <p className="color"> Color {product.color} <br />
-                                            {(product.color == 'White') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
-                                            {(product.color == 'Red') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
-                                            {(product.color == 'Blue') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
-                                            {(product.color == 'Pink') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
-                                            {(product.color == 'Cyan') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
-                                            {(product.color == 'Green') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
-                                            {(product.color == 'Gray') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'White') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'Red') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'Blue') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'Pink') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'Cyan') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'Green') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
+                                            {(product.color === 'Gray') ? <button style={{ backgroundColor: product.color }}> </button> : ''}
                                         </p>
                                         <p>
                                             Size <br />
-                                            {product.size.map(size => {
-                                                return <button className="btn">{size}</button>
+                                            {product.size.map((size, index) => {
+                                                return <button key={size[index]} className="btn">{size}</button>
                                             })}
                                         </p>
                                     </div>
@@ -149,8 +146,20 @@ function ProductDetail(props) {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.product
+        products: state.product,
+        reviews: state.review,
     }
 }
 
-export default connect(mapStateToProps, null)(ProductDetail);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addReview: (review) => {
+            dispatch(actAddReview(review));
+        },
+        getReview: (arrReview) => {
+            dispatch(actGetReviewByIdProduct(arrReview));
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

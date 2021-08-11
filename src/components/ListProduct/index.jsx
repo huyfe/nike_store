@@ -14,7 +14,7 @@ function ListProduct(props) {
 
 
     let listProduct = [];
-    props.listProduct.map((product) => {
+    props.listProduct.forEach((product) => {
         listProduct.push(<Product key={product.id} product={product} />);
     });
 

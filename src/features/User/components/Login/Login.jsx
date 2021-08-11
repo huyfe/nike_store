@@ -1,15 +1,12 @@
-import { Col, Container, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-import './styles.scss';
-import { Link, Redirect } from 'react-router-dom';
-import { withRouter } from "react-router-dom";
 import { GoogleLogin } from 'react-google-login';
-import { GoogleLogout } from 'react-google-login';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { actSetUer } from '../../../../actions/actUser';
+import './styles.scss';
 
-const responseGoogle = (response) => {
-    console.log(response);
-}
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -34,8 +31,8 @@ class Login extends Component {
         var username = this.state.username;
         var password = this.state.password;
 
-        if (username == "") this.setState({ messageUsername: "Vui lòng điền tên đăng nhập!" });
-        if (password == "") this.setState({ messagePassword: "Vui lòng điền mật khẩu!" });
+        if (username === "") this.setState({ messageUsername: "Vui lòng điền tên đăng nhập!" });
+        if (password === "") this.setState({ messagePassword: "Vui lòng điền mật khẩu!" });
 
         if (username !== "" && password !== "") {
             this.setState({ isLogin: true });
@@ -51,7 +48,7 @@ class Login extends Component {
         ReactDOM.render(
             <GoogleLogin
                 clientId="267514984177-9jmq7a1a45i4dug7b8snh11nqgtu34um.apps.googleusercontent.com"
-                buttonText="Login"
+                buttonText="Đăng nhập với google"
                 onSuccess={this.dangNhhapThanhCong}
                 onFailure={this.dangNhapThatBai}
                 cookiePolicy={'single_host_origin'}
@@ -67,6 +64,8 @@ class Login extends Component {
         setTimeout(() => {
             this.setState({ isLogin: false });
         })
+
+        this.props.dangNhap(response.Ss.Me);
     }
     thoat = (response) => {
         console.log("Đã thoát", response);
@@ -120,9 +119,15 @@ class Login extends Component {
             ;
 
         return (kq);
-
-
     }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dangNhap: (user) => {
+            dispatch(actSetUer(user));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login);

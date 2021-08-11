@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Switch from 'react-bootstrap/esm/Switch';
 import { Route } from 'react-router-dom';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ProductPage from './pages/ProductPage';
-import Switch from 'react-bootstrap/esm/Switch';
 
 ProductFeature.propTypes = {
 

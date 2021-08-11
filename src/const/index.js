@@ -12,3 +12,11 @@ export const SET_PRO_TO_STORE = "SET_PRO_TO_STORE";
 export const ADD_NEW_CART = "ADD_NEW_CART";
 export const EDIT_CART = "EDIT_CART";
 export const REMOVE_CART = "REMOVE_CART";
+
+export const SET_USER = "SET_USER";
+export const ADD_NEW_USER = "ADD_NEW_USER";
+export const EDIT_USER = "EDIT_USER";
+export const REMOVE_USER = "REMOVE_USER";
+
+export const GET_REVIEW_BY_ID_PRODUCT = "GET_REVIEW_BY_ID_PRODUCT";
+export const ADD_NEW_REVIEW = "ADD_NEW_REVIEW";

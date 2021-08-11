@@ -360,5 +360,15 @@
     "profile": {
         "ten": "sachHay",
         "tacgia": "Tran Quoc Huy"
-    }
+    },
+    "review": [
+        {
+            "id": "0",
+            "ten": "Huy",
+            "noidung": "Giày đẹp",
+            "sao": "5",
+            "ngay": "05/05/2021",
+            "productId": "1"
+        }
+    ]
 }

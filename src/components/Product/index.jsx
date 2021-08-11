@@ -1,12 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Col } from 'react-bootstrap';
-import './styles.scss';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { actAddCart, actEditCart, actRemoveCart } from '../../actions/actCart';
+import './styles.scss';
 
 Product.propTypes = {
 

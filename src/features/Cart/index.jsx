@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import CartPage from './pages/CartPage';
 import { Route, Switch } from 'react-router-dom';
+import CartPage from './pages/CartPage';
+
 
 CartFeature.propTypes = {
 

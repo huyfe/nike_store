@@ -1,7 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import Cart from '../components/Cart/index';
-import { useEffect } from 'react';
 
 CartPage.propTypes = {
 

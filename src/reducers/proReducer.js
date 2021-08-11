@@ -1,5 +1,5 @@
 // Đầu tiên import các hằng đã định nghĩa trong folder const để sử dụng cho switch case
-import { SET_PRO_TO_STORE, ADD_NEW_PRO, EDIT_PRO, REMOVE_PRO } from '../const/index';
+import { SET_PRO_TO_STORE, ADD_NEW_PRO, EDIT_PRO, REMOVE_PRO, GET_REVIEW_BY_ID_PRODUCT, ADD_NEW_REVIEW } from '../const/index';
 
 // Tiếp theo tạo hàm reducer là proReducer nhận vào state và action
 const proReducer = (state = [], action) => {

@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CartDetail from '../CartDetail/index';
 import { connect } from 'react-redux';
+import CartDetail from '../CartDetail/index';
 
 CartList.propTypes = {
 
@@ -11,7 +10,7 @@ function CartList(props) {
 
     console.log(props.carts);
     let listProduct = [];
-    props.carts.map((product) => {
+    props.carts.forEach((product) => {
         console.log("Product detail ", product);
         listProduct.push(<CartDetail key={product.id} product={product} />);
     });

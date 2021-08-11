@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import ProductDetail from '../components/ProductDetail/index';
 ProductDetailPage.propTypes = {

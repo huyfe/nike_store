@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CartList from '../CartList/index';
 import { Col, Container, Row } from 'react-bootstrap';
-import './styles.scss';
 import { connect } from 'react-redux';
+import CartList from '../CartList/index';
+import './styles.scss';
 
 Cart.propTypes = {
 

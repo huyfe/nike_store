@@ -20,7 +20,7 @@ function HeroSection(props) {
                             <h1>Mang đến trải nghiệm tuyệt vời dành cho bạn</h1>
                             <p>Những sản phẩm chất lượng và mới nhất của chúng tôi đang chờ bạn khám phá!</p>
                             <div className="heroSection__content--link">
-                                <Link to="/product">Shop Now <i className="fas fa-long-arrow-alt-right"></i></Link>
+                                <Link to="/products">Shop Now <i className="fas fa-long-arrow-alt-right"></i></Link>
                             </div>
                         </div>
                     </div>

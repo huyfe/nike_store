@@ -18,7 +18,7 @@ function MiniCart(props) {
     let products = props.carts.map(product => {
         return (
             <div key={product.id} className="miniCartProduct">
-                <div className="miniCartProduct__image"> <img src={product.imageURL[0]} /> </div>
+                <div className="miniCartProduct__image"> <img src={product.imageURL[0]} alt={product.name} /> </div>
                 <div className="miniCartProduct__card">
                     <h4>{product.name}</h4>
                     <p>Giá: {product.priceCart.toLocaleString("vi") || ""} VNĐ</p>
