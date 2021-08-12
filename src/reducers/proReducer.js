@@ -4,6 +4,30 @@ import { SET_PRO_TO_STORE, ADD_NEW_PRO, EDIT_PRO, REMOVE_PRO, GET_REVIEW_BY_ID_P
 // Tiếp theo tạo hàm reducer là proReducer nhận vào state và action
 const proReducer = (state = [], action) => {
     switch (action.type) {
+        case "SEARCH":
+            state = [];
+            action.arrPro.forEach(p => {
+                state = [...state,
+                {
+                    id: p.id,
+                    name: p.name,
+                    amount: p.amount,
+                    price: p.price,
+                    salePrice: p.salePrice,
+                    imageURL: p.imageURL,
+                    description: p.description,
+                    categoryId: p.categoryId,
+                    style: p.style,
+                    createdDate: p.createdDate,
+                    views: p.views,
+                    likes: p.likes,
+                    color: p.color,
+                    size: p.size,
+                    isSale: p.isSale
+                }
+                ];
+            });
+            return state;
         case SET_PRO_TO_STORE:
             //code đưa product vào store
             action.arrPro.forEach(p => {

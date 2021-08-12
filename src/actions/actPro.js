@@ -5,6 +5,10 @@ export const actSetProToStore = (arrPro) => {
     return { type: SET_PRO_TO_STORE, arrPro };
 }
 
+export const actSearchPro = (arrPro) => {
+    return { type: "SEARCH", arrPro };
+}
+
 // Action thêm sản phẩm 
 export const actAddPro = (product) => {
     return { type: ADD_NEW_PRO, product };

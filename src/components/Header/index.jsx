@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { Link, NavLink, Switch } from 'react-router-dom';
@@ -7,13 +7,14 @@ import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { GoogleLogout } from 'react-google-login';
 import { actRemoveUser } from '../../actions/actUser';
+import { actSetProToStore, actSearchPro } from '../../actions/actPro';
+
 
 Header.propTypes = {
     amountProduct: PropTypes.number
 };
-
 function Header(props) {
-
+    const [keyword, setKeyword] = useState("");
     let amount = 0;
     props.carts.forEach((product) => {
         amount += Number(product.amount);
@@ -21,6 +22,22 @@ function Header(props) {
     const logout = (res) => {
         alert("Đăng xuất thành công");
         props.logout();
+    }
+
+    const onChangeSearch = (e) => {
+        setKeyword(e.target.value);
+        console.log(keyword);
+    }
+
+    const search = (e) => {
+        e.preventDefault();
+        let url = `http://localhost:3500/product?q=${keyword}`;
+        fetch(url, { method: "GET" })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                props.setProToStore(data);
+            });
     }
 
     return (
@@ -52,8 +69,8 @@ function Header(props) {
 
                         <Col className="col-auto">
                             <div className="header__icon text-right d-flex align-items-center">
-                                <form className="header__icon--form mr-1">
-                                    <input type="text" placeholder="Tìm kiếm..." />
+                                <form onSubmit={(e) => search(e)} className="header__icon--form mr-1">
+                                    <input onChange={(e) => onChangeSearch(e)} type="text" placeholder="Tìm kiếm..." />
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g><g><g><path fill="#282827" d="M1.594 8.03a6.443 6.443 0 0 1 6.432-6.436c8.532.355 8.527 12.519 0 12.874A6.443 6.443 0 0 1 1.594 8.03zm12.4 5C18.239 8.098 14.589.176 8.026.23A7.8 7.8 0 0 0 .23 8.026c-.054 6.563 7.868 10.213 12.8 5.968l5.582 5.582a.682.682 0 0 0 .964-.964z"></path></g></g></g></svg>
                                     </button>
@@ -116,7 +133,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => {
             dispatch(actRemoveUser());
-        }
+        },
+        setProToStore: (arrPro) => {
+            dispatch(actSearchPro(arrPro));
+        },
     }
 }
 
