@@ -12,6 +12,7 @@ export const SET_PRO_TO_STORE = "SET_PRO_TO_STORE";
 export const ADD_NEW_CART = "ADD_NEW_CART";
 export const EDIT_CART = "EDIT_CART";
 export const REMOVE_CART = "REMOVE_CART";
+export const CLEAR_CART = "CLEAR_CAT";
 
 export const SET_USER = "SET_USER";
 export const ADD_NEW_USER = "ADD_NEW_USER";

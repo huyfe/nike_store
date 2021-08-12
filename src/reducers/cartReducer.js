@@ -1,5 +1,5 @@
 // Đầu tiên import các hằng đã định nghĩa trong folder const để sử dụng cho switch case
-import { ADD_NEW_CART, EDIT_CART, REMOVE_CART } from '../const/index';
+import { ADD_NEW_CART, EDIT_CART, REMOVE_CART, CLEAR_CART } from '../const/index';
 
 // Tiếp theo tạo hàm reducer là proReducer nhận vào state và action
 const cartReducer = (state = [], action) => {
@@ -34,6 +34,9 @@ const cartReducer = (state = [], action) => {
                 else return true;
             })
             console.log("Xóa sản phẩm thành công", state);
+            return state;
+        case CLEAR_CART:
+            state = [];
             return state;
         default: return state;
     }

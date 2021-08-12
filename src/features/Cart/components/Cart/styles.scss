@@ -1,4 +1,50 @@
 .cardSection {
+    .message {
+        &.show {
+            animation: fadeIn 2s;
+            animation-timing-function: ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+        z-index: 999;
+        opacity: 0;
+        width: 400px;
+        height: 200px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        p {
+            margin-top: 10px;
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-25%);
+            font-size: 20px;
+        }
+    }
+
     &__summary {
         p {
             display: flex;

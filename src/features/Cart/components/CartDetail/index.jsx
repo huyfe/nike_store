@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { actEditCart, actRemoveCart } from '../../../../actions/actCart';
+import { actEditCart, actRemoveCart, actClearCart } from '../../../../actions/actCart';
 import './styles.scss';
 
 
@@ -86,7 +86,8 @@ function CartDetail(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         removeCart: (idProduct) => { dispatch(actRemoveCart(idProduct)); },
-        editCart: (idProduct, product) => { dispatch(actEditCart(idProduct, product)) }
+        editCart: (idProduct, product) => { dispatch(actEditCart(idProduct, product)) },
+        clearCart: () => { dispatch(actClearCart()); }
     }
 }
 

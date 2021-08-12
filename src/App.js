@@ -98,10 +98,6 @@ function App(props) {
   );
 }
 
-
-
-
-
 const mapDispatch = (dispatch) => {
   return {
     setProToStore: (arrPro) => {
