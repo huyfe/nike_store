@@ -77,7 +77,7 @@ function Header(props) {
                                     <NavLink to="/user" className="header__icon--user">
                                         {props.user}
                                         <ul>
-                                            <li><Link to="/user">Thông tin tài khoản</Link></li>
+                                            <li><Link to="/admin">Quản lý sản phẩm</Link></li>
                                             <li>
                                                 <NavLink to="/login">
                                                     <GoogleLogout

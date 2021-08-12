@@ -18,6 +18,7 @@ import CartFeature from './features/Cart/index';
 import ProductFeature from './features/Product/index';
 import Report from './components/Report/index';
 import Gallery from './components/Gallery/index';
+import Admin from './components/Admin/index';
 
 import { connect } from 'react-redux';
 import { actSetProToStore } from './actions/actPro';
@@ -90,6 +91,7 @@ function App(props) {
           <Route path="/products" component={ProductFeature} />
           <Route path="/report" component={Report} />
           <Route path="/gallery" component={Gallery} />
+          <Route path="/admin" component={Admin} />
         </Switch>
       </main>
       <MessengerCustomerChat pageId="105512605076052" appId="620116525454173" />
