@@ -56,7 +56,7 @@ function Admin(props) {
             <td style={{ width: "10%" }}><img style={{ width: '100%' }} src={product.imageURL[0]} alt="Images" /></td>
             <td>{product.price.toLocaleString("vi")} VNĐ</td>
             <td>{product.description}</td>
-            <td><button onClick={() => removeProduct(product.id)} class="btn btn-danger mr-2">Xóa</button><button class="btn btn-primary">Sửa</button></td>
+            <td><button onClick={() => removeProduct(product.id)} class="btn btn-danger mr-2"><i class="far fa-trash-alt"></i></button><button class="btn btn-success"><i class="fas fa-edit"></i></button></td>
         </tr>)
     })
 
