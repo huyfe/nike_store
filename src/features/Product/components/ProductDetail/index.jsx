@@ -69,6 +69,12 @@ function ProductDetail(props) {
                 setSao(0);
                 setNoidung("");
                 setIsReview(true);
+
+                window.scrollTo({
+                    top: 600,
+                    left: 0,
+                    behavior: 'smooth'
+                });
             })
 
     }

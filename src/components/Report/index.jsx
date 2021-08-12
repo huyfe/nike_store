@@ -14,8 +14,8 @@ function index(props) {
                 <li>
                     <span className="dot"></span>
                     <h3>Trang chủ</h3>
-                    <p>Nhúng video từ iframe, header dùng router có dropdown loại sản phẩm lấy từ json-server,
-                        gọi component sản phẩm hot.
+                    <p>Nhúng video từ iframe, header dùng router có dropdown loại sản phẩm lấy từ json-server
+                        <br /> Gọi component sản phẩm hot.
                     </p>
                 </li>
                 <li>
@@ -23,8 +23,9 @@ function index(props) {
                     <h3>Sản phẩm</h3>
                     <p>
                         Viết ý kiến, hiển thị ý kiến theo id sản phẩm <br />
-                        Phân loại sản phẩm, lấy sản phẩm nào đang giảm giá, thêm xóa sửa giỏ hàng, giỏ hàng mini,
-                        thích sản phẩm, thêm sản phẩm vào giỏ hàng, chi tiết sản phẩm. Dùng slideer cho sản phẩm liên quan
+                        Phân loại sản phẩm, lấy sản phẩm nào đang giảm giá, thêm xóa sửa giỏ hàng, <br />
+                        Giỏ hàng mini, thích sản phẩm, thêm sản phẩm vào giỏ hàng,
+                        <br /> Chi tiết sản phẩm. Dùng slideer cho sản phẩm liên quan
                     </p>
                 </li>
                 <li>
