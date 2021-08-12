@@ -9,7 +9,7 @@ function index(props) {
 
     return (
         <div className="sectionReport container">
-            <h1>Những thứ đã làm</h1>
+            <h1>Những việc đã làm</h1>
             <ul className="pt-5">
                 <li>
                     <span className="dot"></span>
@@ -55,6 +55,14 @@ function index(props) {
                     <h3>API</h3>
                     <p>
                         Sử dụng API unplash để làm trang thư viện
+                    </p>
+                </li>
+                <li>
+                    <span className="dot"></span>
+                    <h3>Tìm kiếm</h3>
+                    <p>
+                        Khi bấm tìm kiếm trên header sẽ redirect đến trang products và hiện ra <br />
+                        sản phẩm theo từ khóa đã tìm
                     </p>
                 </li>
             </ul>

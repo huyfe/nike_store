@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { Link, NavLink, Switch } from 'react-router-dom';
+import { Link, NavLink, Redirect, Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
@@ -9,12 +9,12 @@ import { GoogleLogout } from 'react-google-login';
 import { actRemoveUser } from '../../actions/actUser';
 import { actSetProToStore, actSearchPro } from '../../actions/actPro';
 
-
 Header.propTypes = {
     amountProduct: PropTypes.number
 };
 function Header(props) {
     const [keyword, setKeyword] = useState("");
+    const [direct, setDirect] = useState(false);
     let amount = 0;
     props.carts.forEach((product) => {
         amount += Number(product.amount);
@@ -26,7 +26,6 @@ function Header(props) {
 
     const onChangeSearch = (e) => {
         setKeyword(e.target.value);
-        console.log(keyword);
     }
 
     const search = (e) => {
@@ -35,8 +34,11 @@ function Header(props) {
         fetch(url, { method: "GET" })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 props.setProToStore(data);
+                setDirect(true);
+                setTimeout(() => {
+                    setDirect(false);
+                }, 1000);
             });
     }
 
@@ -74,6 +76,7 @@ function Header(props) {
                                     <button type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g><g><g><path fill="#282827" d="M1.594 8.03a6.443 6.443 0 0 1 6.432-6.436c8.532.355 8.527 12.519 0 12.874A6.443 6.443 0 0 1 1.594 8.03zm12.4 5C18.239 8.098 14.589.176 8.026.23A7.8 7.8 0 0 0 .23 8.026c-.054 6.563 7.868 10.213 12.8 5.968l5.582 5.582a.682.682 0 0 0 .964-.964z"></path></g></g></g></svg>
                                     </button>
+                                    {direct ? <Redirect to="/products" /> : ""}
                                 </form>
                                 <NavLink to="/loved">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"><g><g><path fill="#282827" d="M15.43 8.184L9.003 14.6 3.051 8.646l-.474-.462a3.915 3.915 0 0 1 0-5.518c1.787-1.76 4.442-1.4 5.997.478.12.106.273.168.433.176a.72.72 0 0 0 .434-.18c3.653-4.324 9.696.855 5.99 5.044zm.867-6.394a5.155 5.155 0 0 0-7.294.041A5.13 5.13 0 1 0 1.71 9.043L8.57 15.9a.61.61 0 0 0 .868 0l6.86-6.857a5.155 5.155 0 0 0 0-7.253z"></path></g></g></svg>
