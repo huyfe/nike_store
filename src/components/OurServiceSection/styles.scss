@@ -39,6 +39,10 @@
         &--shoes {
             height: 100%;
             position: relative;
+            @media (max-width: 767px) {
+                height: 800px;
+                margin-bottom: 30px;
+            }
         }
         &--shirts {
             height: 395px;

@@ -64,13 +64,15 @@ class Gallery extends Component {
 
                 ReactDOM.render(box_image, document.getElementById("ketQua"));
                 this.state.page = this.state.page + 1;
-                this.state.height += 1000;
-                window.scrollTo({
-                    top: this.state.height,
-                    left: 100,
-                    behavior: 'smooth'
-                });
-                this.state.height -= 200;
+                if (window.innerWidth >= 1040) {
+                    this.state.height += 1000;
+                    window.scrollTo({
+                        top: this.state.height,
+                        left: 100,
+                        behavior: 'smooth'
+                    });
+                    this.state.height -= 200;
+                };
             })
     }
 

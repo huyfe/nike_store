@@ -80,7 +80,7 @@ function Products(props) {
     })
 
     return (
-        <div className="sectionProducts container-fluid px-5">
+        <div className="sectionProducts container-fluid px-lg-5 px-3">
             <div className="row">
                 <div className="col-12">
                     <div className="breadcrumbs">

@@ -10,15 +10,12 @@ OurServiceSection.propTypes = {
 function OurServiceSection(props) {
     return (
         <div className="OurServiceSection">
-            <Container fluid={true} className="p-5">
+            <Container fluid={true} className="p-lg-5 p-3">
                 <Row>
                     <Col lg={12}>
-                        {/* <div className="OurServiceSection__title">
-                            <h2 className="text-center">Sản phẩm</h2>
-                        </div> */}
                         <div className="OurServiceSection__content mt-5">
                             <Row>
-                                <Col lg={6}>
+                                <Col lg={6} md={6}>
                                     <div style={{ backgroundImage: `url("./images/pants.jpg")` }} className="content OurServiceSection__content--shoes">
                                         <div className="content__text px-5 py-3">
                                             <h3>Quần</h3>
@@ -26,7 +23,7 @@ function OurServiceSection(props) {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col lg={6}>
+                                <Col lg={6} md={6}>
                                     <div style={{ backgroundImage: `url("./images/hoodies.jpg")` }} className="content OurServiceSection__content--shirts ">
                                         <div className="content__text px-5 py-3">
                                             <h3>Áo</h3>

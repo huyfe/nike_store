@@ -38,7 +38,7 @@ function CartDetail(props) {
         <>
             <Row>
                 <Col lg={12}>
-                    <div className="card-cart">
+                    <div className="card-cart mb-3">
                         <div className="card-cart__image"> <img src={props.product.imageURL[0]} alt={props.product.name} /> </div>
                         <div className="card-cart__card">
                             <h4>
@@ -76,7 +76,7 @@ function CartDetail(props) {
                                 Xóa
                             </button>
                         </div>
-                    </div >;
+                    </div >
                 </Col>
             </Row>
         </>

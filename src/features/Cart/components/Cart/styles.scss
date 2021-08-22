@@ -3,6 +3,7 @@
         &.show {
             animation: fadeIn 2s;
             animation-timing-function: ease-out;
+            visibility: visible;
         }
 
         @keyframes fadeIn {
@@ -22,6 +23,7 @@
         }
         z-index: 999;
         opacity: 0;
+        visibility: hidden;
         width: 400px;
         height: 200px;
         position: fixed;

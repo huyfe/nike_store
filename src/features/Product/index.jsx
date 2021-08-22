@@ -11,7 +11,7 @@ function ProductFeature(props) {
     return (
         // <Route path="/product" exact/>
         <>
-            <Switch>
+            <Switch className="p-0">
                 <Route path="/product/:id" children={<ProductDetailPage />} />
                 <Route path="/products/:id" children={<ProductPage />} />
                 <Route path="/products" exact children={<ProductPage />} />

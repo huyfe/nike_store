@@ -1,0 +1,14 @@
+
+BÁO CÁO ASSIGNMENT
+
+* Chức năng đã làm trong assignment:
+- Đăng nhập, đăng xuất với google với tên miền đã up lên hosting
+- Sử dụng redux để lưu dữ liệu giỏ hàng, review
+- Viết ý kiến, hiển thị ý kiến theo id sản phẩm
+- Thêm vào giỏ hàng khi đang ở chi tiết
+- Api hình ảnh để làm trang thư viện
+- Chức năng chat của Facebook
+- Thanh toán và xóa giỏ hàng
+- Hiển thị, xóa sản phẩm (Quản trị)
+- Tìm kiếm sản phẩm: Khi bấm tìm kiếm sẽ chuyển đến trang sản phẩm và
+hiện ra sản phẩm theo từ khóa.

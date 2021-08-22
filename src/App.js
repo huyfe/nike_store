@@ -27,15 +27,6 @@ import { actGetReviewByIdProduct } from './actions/actReview';
 
 function App(props) {
 
-
-  // State boolean
-  const [isMiniCart, setIsMiniCart] = useState(false);
-
-  // Hàm hiển thị giỏ hàng khi hover vào icon giỏ hàng
-  const showMiniCart = () => {
-    setIsMiniCart(!isMiniCart);
-  }
-
   useEffect(() => {
 
 
@@ -73,14 +64,11 @@ function App(props) {
 
     return () => { }
   }, [])
-
+  console.log("Render lại");
   return (
     <>
-      <Header showMiniCart={showMiniCart} />
+      <Header />
       <main>
-        <aside onMouseLeave={showMiniCart} onMouseEnter={showMiniCart} className={isMiniCart ? "wrapMiniCart show" : "wrapMiniCart"}>
-          <MiniCart />
-        </aside>
         <Route path="/" exact component={HeroSection} />
         <Route path="/" exact component={OurServiceSection} />
         <Route path="/" exact component={() => <HotProduct hotProduct={props.products} />} />
